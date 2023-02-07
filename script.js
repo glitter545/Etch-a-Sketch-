@@ -77,3 +77,39 @@ function ask() {
        return alert("Invalid!");
     }
 }
+
+//new task : create a rainbow based on random RGB value
+
+const rainbowBtn = document.querySelectorAll("button")[2];
+
+rainbowBtn.addEventListener("click",changeListener);
+rainbowBtn.addEventListener("click",rainbow);
+
+
+
+function changeListener() {
+    const divs = document.querySelectorAll("div");
+    for(let i =0;i<divs.length;i++) {
+        divs[i].removeEventListener("mousedown",changeColor);
+        divs[i].removeEventListener("mouseover",changeColor);
+        divs[i].addEventListener("mousedown",rainbow);
+        divs[i].addEventListener("mouseover",rainbow);
+    }
+
+}
+
+function rainbow(e) {
+
+    
+    if(e.type === "mouseover" && !mouseDown) {
+        return
+    } else {
+        function random() {
+            return Math.random()*256;
+        }
+        let red = random();
+        let green = random();
+        let blue = random();
+    e.target.style.backgroundColor =`rgb(${red},${green},${blue})`;
+   }
+}
