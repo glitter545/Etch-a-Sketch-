@@ -16,7 +16,7 @@ function changeColor(e) {
    if(e.type === "mouseover" && !mouseDown) {
     return
    } else {
-    e.target.style.backgroundColor = "green";
+    e.target.style.backgroundColor = "black";
    }
 }
 
@@ -41,7 +41,7 @@ remove();
     const grid = document.getElementById("grid");
     grid.style.width = "400px";
     grid.style.height = "400px";
-    grid.style.border = "2px solid blue";
+    grid.style.border = "2px solid black";
     grid.style.display = "grid";
     grid.style.gridTemplateColumns = `repeat(${num},1fr)`;
     grid.style.gridTemplateRows = `repeat(${num},1fr)`;
@@ -52,7 +52,7 @@ remove();
     let size = 400/num;
     div.style.height = `${size}px`;
     div.style.width = `${size}px`;
-    div.style.backgroundColor = "blue";
+    div.style.backgroundColor = "white";
     grid.appendChild(div);
     div.addEventListener("mouseover",changeColor);
     div.addEventListener("mousedown", changeColor);
@@ -63,6 +63,15 @@ remove();
 const clearGrid = document.querySelectorAll("button")[1];
 
 clearGrid.addEventListener("click",clear);
+
+clearGrid.addEventListener("mouseenter",clearHover);
+clearGrid.addEventListener("mouseout",normal);
+
+function clearHover(e) {
+    e.target.style.color  = "white";
+}
+
+
 
 function clear() {
     return changeGrid(16);
@@ -83,7 +92,8 @@ function ask() {
 const rainbowBtn = document.querySelectorAll("button")[2];
 
 rainbowBtn.addEventListener("click",changeListener);
-rainbowBtn.addEventListener("click",rainbow);
+rainbowBtn.addEventListener("mouseenter",rainbow);
+rainbowBtn.addEventListener("mouseout",normal);
 
 
 
@@ -113,3 +123,14 @@ function rainbow(e) {
     e.target.style.backgroundColor =`rgb(${red},${green},${blue})`;
    }
 }
+
+function hover(e) {
+    e.target.style.backgroundColor = "bisque";
+}
+
+function normal(e) {
+    e.target.style.backgroundColor = "bisque";
+    e.target.style.color = "";
+}
+
+
