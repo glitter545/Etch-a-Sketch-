@@ -1,4 +1,5 @@
 let num;
+const text = document.createElement('H1');
 document.body.style.backgroundColor = "antiquewhite";
 document.body.style.height = "100vh";
 document.body.style.display = "flex";
@@ -37,6 +38,9 @@ function changeGrid(newNum) {
     num = newNum;
 remove();
     //check if grid-item already exists
+
+    text.textContent = `${num}x${num} grid`;
+    document.body.appendChild(text);
 
     const grid = document.getElementById("grid");
     grid.style.width = "400px";
@@ -131,6 +135,19 @@ function hover(e) {
 function normal(e) {
     e.target.style.backgroundColor = "bisque";
     e.target.style.color = "";
+}
+
+const normalBtn = document.querySelectorAll("button")[3];
+
+normalBtn.addEventListener("click",changeBack);
+
+
+function changeBack(e) {
+    const divs = document.querySelectorAll("div");
+    for(let i =0;i<divs.length;i++) {
+        divs[i].addEventListener("mouseover",changeColor);
+     divs[i].addEventListener("mousedown", changeColor);
+    }
 }
 
 
