@@ -14,12 +14,15 @@ document.body.onmouseup = () => (mouseDown = false);
 
 
 function changeColor(e) {
-   if(e.type === "mouseover" && !mouseDown) {
-    return
-   } else {
-    e.target.style.backgroundColor = "black";
-   }
-}
+    if(e.type === "mouseover" && !mouseDown) {
+     return
+    } else {
+     e.preventDefault();        //prevents copying of the divs
+     e.target.style.backgroundColor = "black";
+    }
+ }
+ 
+
 
 const change = document.querySelectorAll("button")[0];
 
@@ -124,6 +127,7 @@ function rainbow(e) {
         let red = random();
         let green = random();
         let blue = random();
+        e.preventDefault();
     e.target.style.backgroundColor =`rgb(${red},${green},${blue})`;
    }
 }
